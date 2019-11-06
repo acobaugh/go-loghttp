@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
+	"net/http/httputil"
 	"time"
 
 	"github.com/motemen/go-nuts/roundtime"
@@ -28,24 +28,13 @@ var DefaultTransport = &Transport{
 }
 
 // Used if transport.LogRequest is not set.
-var DefaultLogRequest = func(r *http.Request) {
-	// Add the request string
-	fmt.Printf("--> %v %v %v\n", r.Method, r.URL, r.Proto)
-	fmt.Printf("Host: %v\n", r.Host)
-
-	// Loop through headers
-	for name, headers := range r.Header {
-		name = strings.ToLower(name)
-		for _, h := range headers {
-			fmt.Printf("%v: %v\n", name, h)
-		}
+var DefaultLogRequest = func(req *http.Request) {
+	requestDump, err := httputil.DumpRequest(req, true)
+	if err != nil {
+		fmt.Println(err)
 	}
-
-	// If this is a POST, add post data
-	if r.Method == "POST" {
-		r.ParseForm()
-		fmt.Printf("\n%s\n", r.Form.Encode())
-	}
+	fmt.Println(string(requestDump))
+	fmt.Println()
 }
 
 // Used if transport.LogResponse is not set.
