@@ -1,7 +1,7 @@
 package global
 
 import (
-	_ "github.com/acobaugh/go-loghttp/global"
+	_ "github.com/acobaugh/go-loghttp"
 	"net/http"
 )
 
