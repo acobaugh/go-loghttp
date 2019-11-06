@@ -6,8 +6,6 @@ Log http.Client's requests and responses automatically.
 
 Forked from [github.com/motemen/go-loghttp](http://godoc.org/github.com/motemen/go-loghttp) to add additional request details (headers, request body, etc) and add module support.
 
-[GoDoc](http://godoc.org/github.com/acobaugh/go-loghttp)
-
 ## Synopsis
 
 To log all the HTTP requests/responses, import `github.com/acobaugh/go-loghttp/global`.
