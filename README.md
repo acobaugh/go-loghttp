@@ -1,13 +1,16 @@
-go-loghttp
-==========
+# go-loghttp
+
+[![GoDoc](https://godoc.org/github.com/acobaugh/go-loghttp?status.svg)](https://godoc.org/github.com/acobaugh/go-loghttp)
 
 Log http.Client's requests and responses automatically.
 
-[GoDoc](http://godoc.org/github.com/motemen/go-loghttp)
+Forked from [github.com/motemen/go-loghttp](http://godoc.org/github.com/motemen/go-loghttp) to add additional request details (headers, request body, etc) and add module support.
+
+[GoDoc](http://godoc.org/github.com/acobaugh/go-loghttp)
 
 ## Synopsis
 
-To log all the HTTP requests/responses, import `github.com/motemen/go-loghttp/global`.
+To log all the HTTP requests/responses, import `github.com/acobaugh/go-loghttp/global`.
 
 ```go
 package main
@@ -18,7 +21,7 @@ import (
 	"net/http"
 	"os"
 
-	_ "github.com/motemen/go-loghttp/global" // Just this line!
+	_ "github.com/acobaugh/go-loghttp/global" // Just this line!
 )
 
 func main() {
@@ -42,15 +45,16 @@ func main() {
 Or set `loghttp.Transport` to `http.Client`'s `Transport` field.
 
 ```go
-import "github.com/motemen/go-loghttp"
+import "github.com/acobaugh/go-loghttp"
 
 client := &http.Client{
 	Transport: &loghttp.Transport{},
 }
 ```
 
-You can modify [loghttp.Transport](http://godoc.org/github.com/motemen/go-loghttp#Transport)'s `LogRequest` and `LogResponse` to customize logging function.
+You can modify [loghttp.Transport](http://godoc.org/github.com/acobaugh/go-loghttp#Transport)'s `LogRequest` and `LogResponse` to customize logging function.
 
-## Author
+## Authors
 
+acobaugh <andrew.cobaugh@gmail.com>
 motemen <motemen@gmail.com>
